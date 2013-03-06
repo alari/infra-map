@@ -1,0 +1,3 @@
+#According to the Grails wiki (see http://www.grails.org/Checking%2BProjects%2Binto%2BSVN)
+target
+web-app/WEB-INF
