@@ -11,10 +11,10 @@ namespace = (target, name, block) ->
     target = target[item] or= {} for item in name.split '.'
     block target, top
 
-DEFAILT_NAMESPACE = 'infra_map'
+DEFAULT_NAMESPACE = 'infra_map'
 
 bound_namespace = (block) ->
-    namespace DEFAILT_NAMESPACE, block
+    namespace DEFAULT_NAMESPACE, block
 
-namespace DEFAILT_NAMESPACE, (exports) ->
+namespace DEFAULT_NAMESPACE, (exports) ->
     exports.namespace = bound_namespace
