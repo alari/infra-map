@@ -1,7 +1,8 @@
 class LeafletMapFactory
 
-    _initialCenter: [59.943, 30.305]
-    _initialZoom: 13
+    constructor: (initialParameters) ->
+        @_initialCenter = initialParameters.initialCenter
+        @_initialZoom = initialParameters.initialZoom
 
     createMap: (element) ->
         mapOptions =
