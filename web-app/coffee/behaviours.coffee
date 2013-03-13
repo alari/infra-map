@@ -25,7 +25,7 @@ class AbstractLeafletBehaviour
         @scope?.$emit prefixedEvent, parameters...
 
     _createPrefixedEvent: (event) ->
-        AbstractLeafletBehaviour.createPrefixedEvent event
+        AbstractLeafletBehaviour.createPrefixedEvent event, @prefix
 
 
 class BasicBehaviour extends AbstractLeafletBehaviour
