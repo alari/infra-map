@@ -33,7 +33,7 @@ class MapContainer
 
     emit: (event, parameters...) ->
         prefixedEvent = infra_map.createPrefixedEvent event, @prefix
-        @scope.$broadcast event, parameters...
+        @scope.$broadcast prefixedEvent, parameters...
 
     behavesAs: (behaviourType) ->
         behaviourType in @_behaviourTypes
