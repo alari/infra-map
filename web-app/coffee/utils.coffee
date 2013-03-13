@@ -25,7 +25,14 @@ createPrefixedEvent = (event, prefix) ->
     else
         event
 
+# function from CoffeeScript Cookbook
+uniqueId = (length=8) ->
+    id = ""
+    id += Math.random().toString(36).substr(2) while id.length < length
+    id.substr 0, length
+
 
 namespace DEFAULT_NAMESPACE, (exports) ->
     exports.namespace = bound_namespace
     exports.createPrefixedEvent = createPrefixedEvent
+    exports.uniqueId = uniqueId
