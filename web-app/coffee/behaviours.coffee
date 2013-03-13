@@ -1,11 +1,5 @@
 class AbstractLeafletBehaviour
 
-    @createPrefixedEvent: (event, prefix) ->
-        if prefix
-            "#{prefix}-#{event}"
-        else
-            event
-
     constructor: (@map, @scope, @prefix) ->
         @_attached = false
 
@@ -25,7 +19,7 @@ class AbstractLeafletBehaviour
         @scope?.$emit prefixedEvent, parameters...
 
     _createPrefixedEvent: (event) ->
-        AbstractLeafletBehaviour.createPrefixedEvent event, @prefix
+        infra_map.createPrefixedEvent event, @prefix
 
 
 class BasicBehaviour extends AbstractLeafletBehaviour
