@@ -1,27 +1,36 @@
 module = angular.module 'infra-map.directives', []
 
 module.directive 'sleepyMap', ->
+
+    defaultParameters =
+        initialCenter: [59.943, 30.305]
+        initialZoom: 13
+
     restrict: 'E'
     template: '<div></div>'
     replace: true
-    transclude: true
 
-    scope:
-        factory: '='
-        delegateInit: '=init'
-        parameters: '='
+    link: (scope, element, attributes) ->
 
-    link: (scope, element) ->
+        scope.prepareParameters = ->
+            if attributes.parameters
+                scope.parameters = scope.$eval attributes.parameters
+            else
+                scope.parameters = defaultParameters
+
+            if attributes.init
+                scope.delegateInit = scope.$eval attributes.init
+            else
+                scope.delegateInit = ->
 
         scope.initialize = ->
-            scope.factory = infra_map.LeafletMapFactory if not scope.factory
-            scope.parameters = {initialCenter: [59.943, 30.305], initialZoom: 13} if not scope.parameters
-            scope.delegateInit = (->) if not scope.delegateInit
+            factory = new infra_map.LeafletMapFactory scope.parameters
+            map = factory.createMap element[0]
+            scope.container = new infra_map.MapContainer map, scope
+            scope.container.add infra_map.BasicBehaviour
+            scope.container.attach infra_map.BasicBehaviour
 
+
+        scope.prepareParameters()
         scope.initialize()
-        factory = new scope.factory scope.parameters
-        map = factory.createMap element[0]
-        scope.container = new infra_map.MapContainer map, scope
-        scope.container.add infra_map.BasicBehaviour
-        scope.container.attach infra_map.BasicBehaviour
         scope.delegateInit(scope.container)
