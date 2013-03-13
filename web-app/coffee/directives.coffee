@@ -20,7 +20,8 @@ module.directive 'sleepyMap', ->
 
         scope.initialize()
         factory = new scope.factory scope.parameters
-        scope.map = factory.createMap element[0]
-        scope.behaviour = new infra_map.BasicBehaviour scope.map, scope
-        scope.behaviour.attach()
-        scope.delegateInit(scope.map, scope)
+        map = factory.createMap element[0]
+        scope.container = new infra_map.MapContainer map, scope
+        scope.container.add infra_map.BasicBehaviour
+        scope.container.attach infra_map.BasicBehaviour
+        scope.delegateInit(scope.container)

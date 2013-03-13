@@ -2,6 +2,7 @@ modules = {
     'infra-map' {
         resource url: [dir: "coffee", file: "factory.coffee", plugin: "infra-map"]
         resource url: [dir: "coffee", file: "behaviours.coffee", plugin: "infra-map"]
+        resource url: [dir: "coffee", file: "container.coffee", plugin: "infra-map"]
         resource url: [dir: "coffee", file: "directives.coffee", plugin: "infra-map"]
         dependsOn 'angular', 'leaflet', 'infra-map-utils'
    }
