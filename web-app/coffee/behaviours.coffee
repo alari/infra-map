@@ -26,7 +26,7 @@ class BasicBehaviour extends AbstractLeafletBehaviour
 
     @BOUNDS_CHANGED: 'map-bounds-changed'
 
-    @MAP_CLICKED = 'map-clicked'
+    @MAP_CLICKED: 'map-clicked'
 
     _doAttach: ->
         @map.on 'dragend zoomend', @_onBoundsChange
@@ -38,10 +38,10 @@ class BasicBehaviour extends AbstractLeafletBehaviour
         @map.off 'click', @_onMapClick
 
     _onBoundsChange: =>
-        @_emit BasicBehaviour.BOUNDS_CHANGED, @map.getBounds()
+        @_emit @constructor.BOUNDS_CHANGED, @map.getBounds()
 
     _onMapClick: (event) =>
-        @_emit BasicBehaviour.MAP_CLICKED, event.latlng
+        @_emit @constructor.MAP_CLICKED, event.latlng
 
 
 infra_map.namespace (exports) ->
