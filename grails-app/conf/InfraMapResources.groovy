@@ -9,8 +9,8 @@ modules = {
    }
 
     leaflet {
-        resource "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css"
-        resource url: "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css", wrapper: { s -> "<!--[if lt IE 8]>$s<![endif]-->" }
-        resource "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"
+        resource id: "leaflet.css", url: "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css"
+        resource id: "leaflet.ie.css", url: "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css", wrapper: { s -> "<!--[if lt IE 8]>$s<![endif]-->" }
+        resource id: "leaflet.js", url: "http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"
     }
 }
